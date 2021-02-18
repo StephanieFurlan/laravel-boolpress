@@ -8,10 +8,10 @@ class Post extends Model
 {
     //
     protected $fillable = [
+        'title',
+        'substitle',
+        'publication_date',
         'author',
-        'content'
+        'text'
     ];
-
-    // i timestamps faranno parte del postInfo
-    public $timestamps = false;
 }

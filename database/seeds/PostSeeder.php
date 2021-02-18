@@ -17,8 +17,11 @@ class PostSeeder extends Seeder
         
         for($i = 0; $i < 3; $i++) {
             $newPost = new Post();
+            $newPost->title = $faker->text(50);
+            $newPost->subtitle = $faker->text(10);
             $newPost->author = $faker->name();
-            $newPost->content = $faker->text(200);
+            $newPost->content = $faker->text(2000);
+            $newPost->publication_date = $faker->dateTime();
             $newPost->save();
         }
     }

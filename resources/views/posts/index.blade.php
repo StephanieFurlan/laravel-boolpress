@@ -27,9 +27,8 @@
                     </tr>
                     @endforeach
               </tbody>
-
         </table>
-
+        <a class="btn btn-primary" href="{{ route('posts.create')}}">Create New Post</a>
     </div>
     
 @endsection

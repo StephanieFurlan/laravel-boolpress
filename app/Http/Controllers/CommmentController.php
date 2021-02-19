@@ -3,9 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Post;
 
-class PostController extends Controller
+class CommmentController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +14,6 @@ class PostController extends Controller
     public function index()
     {
         //
-        $posts = Post::all();
-        return view('posts.index', compact('posts'));
     }
 
     /**
@@ -27,7 +24,6 @@ class PostController extends Controller
     public function create()
     {
         //
-        return view('posts.create');
     }
 
     /**
@@ -47,10 +43,9 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Post $post)
+    public function show($id)
     {
         //
-        return view('posts.show', compact('post'));
     }
 
     /**
@@ -84,9 +79,6 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        $post = Post::findOrFail($id);
-        $post->delete();
-
-        return redirect()->route('posts.index');
+        //
     }
 }

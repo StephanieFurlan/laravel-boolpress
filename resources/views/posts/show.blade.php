@@ -29,6 +29,15 @@
             <li><b>Other: </b>{{ $post->postInfo->content }}</li>
         </ul>
         <a class="btn btn-primary" href="{{ route('posts.index') }}">Home</a>
+        <h2 class="mt-5">Comments</h2>
+        <ul>
+            @foreach ($post->comments as $comment)
+                <li>
+                    <p>{{ $comment->content }}</p>
+                    <p>{{ $comment->author }}</p>
+                </li>
+            @endforeach
+        </ul>
     </div>
     
 @endsection

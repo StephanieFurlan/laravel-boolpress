@@ -15,8 +15,11 @@ class Post extends Model
         'text'
     ];
 
-    public function postInfo()
-    {
+    public function postInfo() {
         return $this->hasOne('App\PostInfo');
+    }
+
+    public function comments() {
+        return $this->hasMany('App\Comment');
     }
 }

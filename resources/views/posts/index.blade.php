@@ -17,8 +17,13 @@
                         <td>{{ $post->content }}</td>
                         <td><a class="btn btn-primary" href="{{ route('posts.show', $post->id)}}">Info</a></td>
                         <td><a class="btn btn-success" href="">Update</a></td>
-                        <td><a class="btn btn-danger" href="">Delete</a></td>
-                        
+                        <td>
+                            <form style="display:inline-block" action="{{ route('posts.destroy', $post->id) }}" method="post">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger">Delete</button>
+                            </form>
+                        </td>
                     </tr>
                     @endforeach
               </tbody>

@@ -13,6 +13,12 @@ class PostInfo extends Model
         'comment_status',
         'content'
     ];
+    
     protected $table = 'post_infos';
+    
     public $timestamps = false;
+
+    public function post() {
+        return $this->belongsTo('App\Post');
+    }
 }

@@ -14,4 +14,9 @@ class Post extends Model
         'author',
         'text'
     ];
+
+    public function postInfo()
+    {
+        return $this->hasOne('App\PostInfo');
+    }
 }

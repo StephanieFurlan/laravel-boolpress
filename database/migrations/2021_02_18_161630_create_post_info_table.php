@@ -19,13 +19,13 @@ class CreatePostInfoTable extends Migration
             // id - foreign key
             $table->unsignedBigInteger('post_id');
             // stato del post
-            $table->string('post_satus', 7);
+            $table->string('post_status', 7);
             // comment status
             $table->string('comment_status', 7);
             // comment content
             $table->string('content');
             // foreign-key post_id
-            $table->foreign('post_id')->references('id')->on('posts');
+            $table->foreign('post_id')->references('id')->on('posts')->onDelete('cascade');
         });
     }
 

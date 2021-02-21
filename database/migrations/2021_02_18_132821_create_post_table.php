@@ -27,6 +27,7 @@ class CreatePostTable extends Migration
             // data di publicazione
             $table->date('publication_date');
             // timestamps
+            $table->string('img_path');
             $table->timestamps();
         });
     }

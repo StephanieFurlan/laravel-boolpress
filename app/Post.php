@@ -12,7 +12,8 @@ class Post extends Model
         'substitle',
         'publication_date',
         'author',
-        'text'
+        'text',
+        'img_path'
     ];
 
     public function postInfo() {

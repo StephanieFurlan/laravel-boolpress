@@ -22,6 +22,7 @@ class PostSeeder extends Seeder
             $newPost->author = $faker->name();
             $newPost->content = $faker->text(2000);
             $newPost->publication_date = $faker->dateTime();
+            $newPost->img_path = $faker->imageUrl(640, 480, 'food');
             $newPost->save();
         }
     }

@@ -42,7 +42,7 @@
         </div>
         <div class="d-flex justify-content-between">
             <a type="submit" class="btn btn-success">Salva</a>
-            <a href="{{ route('posts.index' )}}" class="btn btn-primary">Elenco post</a>
+            <a href="{{ route('posts.index')}}" class="btn btn-primary">Elenco post</a>
         </div>
     </form>
 </div>

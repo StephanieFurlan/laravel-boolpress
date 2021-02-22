@@ -87,8 +87,10 @@ class PostController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
-    {
-        //
+    {   
+        $post = Post::find($id);
+        return view('posts.update', compact('post'));
+
     }
 
     /**
@@ -100,7 +102,22 @@ class PostController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        
+        $postValidation = $request->validate($this->postValidator);
+        $data = $request->all();
+
+
+
+        $post = Post::find($id);
+        $post->update($data);
+
+        $postInfo = PostInfo::where('post_id', $id)->first();
+        
+        $postInfo->update($data);
+        $postInfo->content = $data['extra_content'];
+        $postInfo->save();
+
+        return redirect()->route('posts.index')->with('message', 'Post aggiornato correttamente');
     }
 
     /**

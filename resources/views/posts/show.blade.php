@@ -29,6 +29,23 @@
                 @endforeach
             </div>
         @endif
+
+        <h2 class="mt-5">Aggiungi un Commento</h2>
+        <form action="" method="POST">
+            @csrf
+            @method('POST')
+            <div class="form-group">
+                <label for="author">Autore</label>
+                <input type="text" class="form-control" id="author" placeholder="Titolo..." name="author">
+            </div>
+
+            <div class="form-group">
+                <label for="content">Testo del commento</label>
+                <textarea class="form-control" id="content" rows="6" name="content" ></textarea>
+            </div>
+
+            <button class="btn btn-success">Invia</button>
+        </form>
         
     </div>
 @endsection

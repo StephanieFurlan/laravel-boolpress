@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use App\Post;
 use App\PostInfo;
 
@@ -57,6 +58,7 @@ class PostController extends Controller
         $data = $request->all();
         $newPost = new Post();
         $newPost->fill($data);
+        $newPost->slug = Str::slug($newPost->title);
         $newPost->save();
         $data['post_id'] = $newPost->id;
         

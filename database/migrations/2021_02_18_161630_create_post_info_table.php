@@ -23,7 +23,7 @@ class CreatePostInfoTable extends Migration
             // comment status
             $table->string('comment_status', 7);
             // comment content
-            $table->string('content');
+            $table->string('content', 50);
             // foreign-key post_id
             $table->foreign('post_id')->references('id')->on('posts')->onDelete('cascade');
         });

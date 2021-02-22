@@ -18,3 +18,11 @@ Route::get('/', function () {
 });
 
 Route::resource('/posts', 'PostController');
+
+Route::get('/blog/{slug}', 'BlogController@show')->name('post');
+
+Route::post('/blog/{id}/comment', 'BlogController@addComment')->name('add-comment');
+
+Route::fallback(function() {
+    return response()->json(['message' => 'Not Found.'], 404);
+});

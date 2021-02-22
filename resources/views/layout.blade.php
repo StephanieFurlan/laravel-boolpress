@@ -9,7 +9,14 @@
     <title>Posts</title>
 </head>
 <body>
-
+    <nav class="navbar navbar-dark fixed-top bg-dark navbar-expand-lg">
+        <a class="navbar-brand" href="{{ route('posts.index') }}">POSTS</a>
+        <ul class="navbar-nav">
+            <li class="nav-item active">
+                <a class="nav-link" href="{{ route('posts.index') }}">Home <span class="sr-only">(current)</span></a>
+            </li>
+        </ul>
+    </nav>
     @yield('content')
     
 </body>

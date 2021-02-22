@@ -4,9 +4,22 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Post;
+use App\PostInfo;
 
 class PostController extends Controller
-{
+{   
+
+    private $postValidator = [
+        'title' => 'required|string|max:50',
+        'subtitle' => 'required|string|max:10',
+        'publication_date' => 'required|date',
+        'author' => 'required|string|max:30',
+        'content' => 'required|string',
+        'img_path' => 'required|URL',
+        'extra_content' => 'required|string'
+    ];
+
+    public $name = "Stephanie";
     /**
      * Display a listing of the resource.
      *
@@ -39,6 +52,20 @@ class PostController extends Controller
     public function store(Request $request)
     {
         //
+       
+        $postValidation = $request->validate($this->postValidator);
+        $data = $request->all();
+        $newPost = new Post();
+        $newPost->fill($data);
+        $newPost->save();
+        $data['post_id'] = $newPost->id;
+        
+
+        $newPostInfo = new PostInfo();
+        $newPostInfo->fill($data);
+        $newPostInfo->content = $data['extra_content'];
+        $newPostInfo->save();
+        return redirect()->route('posts.index')->with('message', 'Post creato correttamente');
     }
 
     /**

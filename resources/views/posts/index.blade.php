@@ -1,12 +1,15 @@
 @extends('layout')
 
 @section('content')
-    <div class="container mt-5">
+    <div class="container mt-5 pt-5">
         <div class="d-flex justify-content-between align-items-end">
             <h1 class="mt-2">Available Posts</h1>
             <a class="btn btn-success" href="{{ route('posts.create')}}">Create New Post</a>
         </div>
-        
+        @if (Session::has('message'))
+            <div class="alert alert-info">{{ Session::get('message') }}</div>
+        @endif
+                
         <table class="table table-dark table-striped mt-2">
             <thead>
                 <tr>

@@ -9,10 +9,10 @@ class Post extends Model
     //
     protected $fillable = [
         'title',
-        'substitle',
+        'subtitle',
         'publication_date',
         'author',
-        'text',
+        'content',
         'img_path'
     ];
 

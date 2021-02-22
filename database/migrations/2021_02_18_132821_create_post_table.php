@@ -18,8 +18,10 @@ class CreatePostTable extends Migration
             $table->bigIncrements('id');
             // titolo
             $table->string('title', 50);
+            // slug
+            $table->string('slug', 100);
             // titolo
-            $table->string('subtitle', 10);
+            $table->string('subtitle', 50);
             // authore del post
             $table->string('author', 30);
             // testo del post

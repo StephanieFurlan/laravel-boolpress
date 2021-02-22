@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Str;
 use App\Post;
 use Faker\Generator as Faker;
 
@@ -18,7 +19,8 @@ class PostSeeder extends Seeder
         for($i = 0; $i < 3; $i++) {
             $newPost = new Post();
             $newPost->title = $faker->text(50);
-            $newPost->subtitle = $faker->text(10);
+            $newPost->subtitle = $faker->text(50);
+            $newPost->slug = Str::slug($newPost->title);
             $newPost->author = $faker->name();
             $newPost->content = $faker->text(2000);
             $newPost->publication_date = $faker->dateTime();

@@ -20,7 +20,7 @@ class PostInfoSeeder extends Seeder
            $postInfo->post_id = $id;
            $postInfo->post_status = $faker->randomElement(['public', 'private', 'draft']);
            $postInfo->comment_status = $faker->randomElement(['open', 'private', 'closed']);
-           $postInfo->content = $faker->text(200);
+           $postInfo->content = $faker->text(20);
            $postInfo->save();
         }
         

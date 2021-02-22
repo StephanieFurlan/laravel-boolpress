@@ -11,7 +11,7 @@ class PostController extends Controller
 
     private $postValidator = [
         'title' => 'required|string|max:50',
-        'subtitle' => 'required|string|max:10',
+        'subtitle' => 'required|string|max:50',
         'publication_date' => 'required|date',
         'author' => 'required|string|max:30',
         'content' => 'required|string',
@@ -113,8 +113,10 @@ class PostController extends Controller
 
         $postInfo = PostInfo::where('post_id', $id)->first();
         
-        $postInfo->update($data);
+        
         $postInfo->content = $data['extra_content'];
+        $postInfo->post_status = $data['post_status'];
+        $postInfo->comment_status = $data['comment_status'];
         $postInfo->save();
 
         return redirect()->route('posts.index')->with('message', 'Post aggiornato correttamente');

@@ -7,6 +7,7 @@ use Illuminate\Support\Str;
 use App\Post;
 use App\PostInfo;
 use App\Tag;
+use App\Image;
 
 class PostController extends Controller
 {   
@@ -42,8 +43,10 @@ class PostController extends Controller
     public function create()
     {
         //
-        $tags = Tag::All();
-        return view('posts.create', compact('tags'));
+        $tags = Tag::all();
+        $images = Image::all();
+
+        return view('posts.create', compact('tags', 'images'));
     }
 
     /**
@@ -55,7 +58,6 @@ class PostController extends Controller
     public function store(Request $request)
     {
         //
-       
         $postValidation = $request->validate($this->postValidator);
         $data = $request->all();
         
@@ -76,8 +78,6 @@ class PostController extends Controller
                 $newPost->tags()->attach($data['tags']);
             }
         }
-        
-
 
         return redirect()->route('posts.index')->with('message', 'Post creato correttamente');
     }

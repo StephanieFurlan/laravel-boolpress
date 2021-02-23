@@ -70,6 +70,17 @@
                 </div>
             </div>
         @endforeach
+
+        <h1 class="mt-5">Images</h1>
+        @foreach ($images as $image)
+            <div class="form-group">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="image-{{ $image->id }}" value="{{ $image->id }}" name="images[]">
+                    <label class="form-check-label" for="image-{{ $image->id }}">{{$tag->alt}}</label>
+                </div>
+                <img style="width:100px" src="{{$image->link}}" alt="{{ $image->alt }}">
+            </div>
+        @endforeach
         
         <div class="d-flex justify-content-between">
             <button type="submit" class="btn btn-success">Salva</button>

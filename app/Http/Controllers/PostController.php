@@ -58,18 +58,27 @@ class PostController extends Controller
        
         $postValidation = $request->validate($this->postValidator);
         $data = $request->all();
-        dd($data);
+        
         $newPost = new Post();
         $newPost->fill($data);
         $newPost->slug = Str::slug($newPost->title);
-        $newPost->save();
+        $postSaveResult = $newPost->save();
         $data['post_id'] = $newPost->id;
         
 
         $newPostInfo = new PostInfo();
         $newPostInfo->fill($data);
         $newPostInfo->content = $data['extra_content'];
-        $newPostInfo->save();
+        $postInfoSaveResult = $newPostInfo->save();
+
+        if($postSaveResult) {
+            if(!empty($data['tags'])) {
+                $newPost->tags()->attach($data['tags']);
+            }
+        }
+        
+
+
         return redirect()->route('posts.index')->with('message', 'Post creato correttamente');
     }
 
@@ -94,7 +103,9 @@ class PostController extends Controller
     public function edit($id)
     {   
         $post = Post::find($id);
-        return view('posts.update', compact('post'));
+
+        $tags = Tag::all();
+        return view('posts.update', compact('post', 'tags'));
 
     }
 
@@ -118,6 +129,11 @@ class PostController extends Controller
 
         $postInfo = PostInfo::where('post_id', $id)->first();
         
+        if(empty($data['tags'])) {
+            $post->tags()->detach();
+        } else {
+            $post->tags()->sync($data['tags']);
+        }
         
         $postInfo->content = $data['extra_content'];
         $postInfo->post_status = $data['post_status'];

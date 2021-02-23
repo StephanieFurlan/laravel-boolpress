@@ -62,6 +62,18 @@
             <textarea class="form-control" id="content" rows="3" name="extra_content">{{ $post->postInfo->content }}</textarea>
         </div>
 
+        <h1 class="mt-5">Tags</h1>
+        @foreach ($tags as $tag)
+            <div class="form-group">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="tag-{{ $tag->id }}" value="{{ $tag->id }}" name="tags[]"
+                    @if ($post->tags->contains($tag->id)) checked @endif>
+                    <label class="form-check-label" for="tag-{{ $tag->id }}">
+                      {{$tag->name}}
+                    </label>
+                  </div>
+            </div>
+        @endforeach
         
         <div class="d-flex justify-content-between">
             <button type="submit" class="btn btn-success">Salva</button>

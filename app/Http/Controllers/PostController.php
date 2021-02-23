@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use App\Post;
 use App\PostInfo;
+use App\Tag;
 
 class PostController extends Controller
 {   
@@ -41,7 +42,8 @@ class PostController extends Controller
     public function create()
     {
         //
-        return view('posts.create');
+        $tags = Tag::All();
+        return view('posts.create', compact('tags'));
     }
 
     /**
@@ -56,6 +58,7 @@ class PostController extends Controller
        
         $postValidation = $request->validate($this->postValidator);
         $data = $request->all();
+        dd($data);
         $newPost = new Post();
         $newPost->fill($data);
         $newPost->slug = Str::slug($newPost->title);

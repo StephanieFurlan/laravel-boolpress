@@ -9,8 +9,8 @@
             <img style="max-width: 500px" class="mb-5" src="{{$post->img_path}}" alt="">
             <div>
                 @foreach ($post->tags as $tag)
-                <span class="badge badge-info">{{ $tag->name }}</span>
-            @endforeach
+                    <span class="badge badge-info">{{ $tag->name }}</span>
+                @endforeach
             </div>
         </div>
         <h2 class="my-2">Content</h2>

@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('main')
 @section('content')
     <div class="container mt-5 pt-5">
         <div class="text-center">
@@ -6,17 +6,23 @@
             <h3 style="color:gray">
                 <i>{{ $post->subtitle }}</i>
             </h3>
-            <img class="mb-5" src="{{$post->img_path}}" alt="">
+            <img style="max-width: 500px" class="mb-5" src="{{$post->img_path}}" alt="">
+            <div>
+                @foreach ($post->tags as $tag)
+                <span class="badge badge-info">{{ $tag->name }}</span>
+            @endforeach
+            </div>
         </div>
+        <h2 class="my-2">Content</h2>
         <p>{{ $post->content}}</p>
-        <h2 class="mt-5">Other Info</h2>
+        <h2 class="my-2">Other Info</h2>
         <ul class="list-group">
             <li class="list-group-item"><b>Status: </b>{{ $post->postInfo->post_status }}</li>
             <li class="list-group-item"><b>Comment Status: </b>{{ $post->postInfo->comment_status }}</li>
             <li class="list-group-item"><b>Other: </b>{{ $post->postInfo->content }}</li>
         </ul>
         @if (count($post->comments) != 0)
-            <h2 class="mt-5">Comments</h2>
+            <h2 class="my-2">Comments</h2>
             <div class="list-group">
                 @foreach ($post->comments as $comment)
                 <div class="list-group-item list-group-item-action">
@@ -44,7 +50,7 @@
                     <textarea class="form-control" id="content" rows="6" name="content" ></textarea>
                 </div>
 
-                <button class="btn btn-success">Invia</button>
+                <button class="btn btn-success my-2">Invia</button>
             </form>
         @endif
 

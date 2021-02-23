@@ -66,10 +66,8 @@
             <div class="form-group">
                 <div class="form-check">
                     <input class="form-check-input" type="checkbox" id="tag-{{ $tag->id }}" value="{{ $tag->id }}" name="tags[]">
-                    <label class="form-check-label" for="tag-{{ $tag->id }}">
-                      {{$tag->name}}
-                    </label>
-                  </div>
+                    <label class="form-check-label" for="tag-{{ $tag->id }}">{{$tag->name}}</label>
+                </div>
             </div>
         @endforeach
         
